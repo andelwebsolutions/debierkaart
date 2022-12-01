@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "jsx": "react-jsx",
+        "lib": ["dom", "esnext"],
+        "module": "esnext",
+        "esModuleInterop": true,
+        "moduleResolution":"node"
+},
+    "exclude": ["node_modules"],
+}
