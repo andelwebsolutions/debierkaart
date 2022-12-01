@@ -39,28 +39,13 @@ class BreweryRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Brewery[] Returns an array of Brewery objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('b')
-//            ->andWhere('b.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('b.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
-
-//    public function findOneBySomeField($value): ?Brewery
-//    {
-//        return $this->createQueryBuilder('b')
-//            ->andWhere('b.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    public function findByZipcode($value): array
+    {
+        return $this->createQueryBuilder('b')
+            ->andWhere('b.zipcode = :zipcode')
+            ->setParameter('zipcode', $value)
+            ->orderBy('b.id', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
 }
