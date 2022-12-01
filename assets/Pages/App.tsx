@@ -27,7 +27,9 @@ const App: FC = () => {
             .then((response) => {
                 setBreweries(response.data);
             }).catch(error => {
-                if (error.response.status != 422) return;
+                if (error.response.status != 422) {
+                    alert('Er is iets mis gegaan. Probeer het opnieuw.');
+                };
 
                 setErrors(error.response.data);
             }).finally(() => setIsLoading(0));
@@ -38,8 +40,8 @@ const App: FC = () => {
             <Box css={css`
                     background: rgb(250, 204, 21);
                     background-size: contain;
-                    background: -webkit-linear-gradient(rgba(17, 24, 39, 0.2), rgba(17, 24, 39, 0.8)), url("/background.jpg");
-                    background: linear-gradient(rgba(17, 24, 39, 0.2), rgba(17, 24, 39, 0.8)), url("/background.jpg");`}
+                    background: -webkit-linear-gradient(rgba(17, 24, 39, 0.2), rgba(17, 24, 39, 0.9)), url("/background.jpg");
+                    background: linear-gradient(rgba(17, 24, 39, 0.2), rgba(17, 24, 39, 0.9)), url("/background.jpg");`}
                  bgPosition="center" bgRepeat="no-repeat">
                 <Box maxW="960px" mx="auto" pt="48" pb="28" px="4">
                     <Flex>
@@ -55,12 +57,17 @@ const App: FC = () => {
                                     pointerEvents='none'
                                     children={<SearchIcon color='gray.300' />}
                                 />
-                                <Input type="text" name="zipcode" placeholder="Vul je postcode in..."
-                                       pl="10"
-                                       required
-                                       color="white"
-                                       _placeholder={{ color: 'gray.200' }}
-                                       onChange={e => setQuery({ ...query, zipcode: e.target.value })}/>
+                                <FormControl isInvalid={errors.zipcode}>
+                                    <Input type="text" name="zipcode" placeholder="Vul je postcode in..."
+                                           pl="10"
+                                           required
+                                           color="white"
+                                           _placeholder={{ color: 'gray.200' }}
+                                           onChange={e => setQuery({ ...query, zipcode: e.target.value })}/>
+                                    <FormErrorMessage>
+                                        Vul een geldige postcode in.
+                                    </FormErrorMessage>
+                                </FormControl>
                                 <Button color="gray.50" bgColor="yellow.500" _hover={{ bg: "yellow.400" }} type="submit" isLoading={isLoading === 1} loadingText="Laden...">Zoeken</Button>
                             </InputGroup>
                         </form>
@@ -70,7 +77,7 @@ const App: FC = () => {
 
             <Box maxW="960px" mx="auto" py="12">
                 { breweries.data && breweries.data.length
-                    ? breweries.data.map((brewery, breweryIdx) => <Heading>{brewery.name}</Heading>)
+                    ? breweries.data.map((brewery, breweryIdx) => <Heading key={breweryIdx}>{brewery[0].name}</Heading>)
                     : null }
             </Box>
 

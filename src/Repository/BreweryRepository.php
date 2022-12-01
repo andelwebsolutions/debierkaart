@@ -39,12 +39,22 @@ class BreweryRepository extends ServiceEntityRepository
         }
     }
 
-    public function findByZipcode($value): array
+    public function findByCoordinatesAndOrderByDistance(string $location_lat, string $location_lng, int $max_distance): array
     {
+        /* @TODO: The distance is not correctly added to the entity object in the result. */
         return $this->createQueryBuilder('b')
-            ->andWhere('b.zipcode = :zipcode')
-            ->setParameter('zipcode', $value)
-            ->orderBy('b.id', 'ASC')
+            ->select('b')
+            ->addSelect(
+                '(ROUND(6371 * acos(cos( radians('.$location_lat.') ) 
+                       * cos( radians( b.location_lat ) ) 
+                       * cos( radians( b.location_lng ) - radians('.$location_lng.') ) 
+                       + sin( radians('.$location_lat.') ) 
+                       * sin( radians( b.location_lat ) )
+                 ), 1)) as distance'
+            )
+            ->having('distance <= :max_distance')
+            ->setParameter('max_distance', $max_distance)
+            ->orderBy('distance', 'ASC')
             ->getQuery()
             ->getResult();
     }
