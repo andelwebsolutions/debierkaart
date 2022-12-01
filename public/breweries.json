@@ -1,0 +1,200 @@
+{
+  "breweries": [
+    {
+      "address": "Overtocht 43",
+      "city": "Bodegraven",
+      "name": "Brouwerij de Molen",
+      "open": [
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+      "zipcode": "2411 BT",
+      "location": {
+        "lat": 52.0856802,
+        "lng": 4.7420825
+      }
+    },
+    {
+      "address": "Weverij 5",
+      "city": "Amstelveen",
+      "name": "de naeckte brouwers",
+      "open": [
+        "Wednesday"
+      ],
+      "zipcode": "1185 ZE",
+      "location": {
+        "lat": 52.2899968,
+        "lng": 4.840067599999999
+      }
+    },
+    {
+      "address": "Gedempte Voldersgracht 2",
+      "city": "Haarlem",
+      "name": "Jopen",
+      "open": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+      "zipcode": "2011 WB",
+      "location": {
+        "lat": 52.38121109999999,
+        "lng": 4.6298238
+      }
+    },
+    {
+      "address": "Pratumplaats 2A",
+      "city": "Utrecht (De Meern)",
+      "name": "Maximus",
+      "open": [
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+      "zipcode": "3454 NA",
+      "location": {
+        "lat": 52.0884367,
+        "lng": 5.0459799
+      }
+    },
+    {
+      "address": "Aelbrechtskolk 12",
+      "city": "Rotterdam",
+      "name": "Stadsbrouwerij De Pelgrim",
+      "open": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "zipcode": "3024 RE",
+      "location": {
+        "lat": 51.90874849999999,
+        "lng": 4.448885300000001
+      }
+    },
+    {
+      "address": "Guido Gezellelaan 49",
+      "city": "Mechelen, België",
+      "name": "Brouwerij Het Anker",
+      "open": [
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
+      "zipcode": "2800",
+      "location": {
+        "lat": 51.031813,
+        "lng": 4.4729477
+      }
+    },
+    {
+      "address": "Achterweg 22",
+      "city": "Limmen",
+      "name": "Brouwerij Dampegheest",
+      "open": [
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+      "zipcode": "1906 AG",
+      "location": {
+        "lat": 52.5680873,
+        "lng": 4.698940599999999
+      }
+    },
+    {
+      "address": "Funenkade 7",
+      "city": "Amsterdam",
+      "name": "Brouwerij 't IJ",
+      "open": [
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
+      "zipcode": "1018 AL",
+      "location": {
+        "lat": 52.366772,
+        "lng": 4.9263433
+      }
+    },
+    {
+      "address": "Flevoweg 35a",
+      "city": "Leiden",
+      "name": "Leidsch Bier",
+      "open": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
+      "zipcode": "2318 BX",
+      "location": {
+        "lat": 52.1742853,
+        "lng": 4.4970029
+      }
+    },
+    {
+      "address": "Schilderweg 214",
+      "city": "Oudeschild",
+      "name": "Texelse Bierbrouwerij",
+      "open": [
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "zipcode": "1792 CK",
+      "location": {
+        "lat": 53.04482590000001,
+        "lng": 4.8279006
+      }
+    },
+    {
+      "address": "Schoolstraat 77",
+      "city": "Vleuten",
+      "name": "Speciaalbierbrouwerij Duits & Lauret",
+      "open": [
+        "Monday",
+        "Tuesday",
+        "Wednesday"
+      ],
+      "zipcode": "3451 AC",
+      "location": {
+        "lat": 52.1111386,
+        "lng": 5.0141826
+      }
+    },
+    {
+      "address": "Maar 2",
+      "city": "Jabeek",
+      "name": "Dorpsbrouwerij de Maar",
+      "open": [
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "zipcode": "6454 AM",
+      "location": {
+        "lat": 50.9819255,
+        "lng": 5.9426359
+      }
+    }
+  ]
+}
