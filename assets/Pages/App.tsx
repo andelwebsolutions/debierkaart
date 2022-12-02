@@ -4,13 +4,28 @@ import { Box, Heading, Text, Input, InputGroup, InputLeftElement, Button, Flex, 
 import { SearchIcon } from "@chakra-ui/icons";
 import axios from "axios";
 import { css } from "@emotion/react";
+import BreweryList from "../components/BreweryList";
+
+interface Brewery {
+    id: string;
+    name: number;
+    city: string;
+    address: string;
+    zipcode: string;
+    $location_lat: number;
+    location_lng: number;
+    openOn: string[];
+    distance: number;
+}
+
+interface Query {
+    zipcode: string;
+}
 
 const App: FC = () => {
-    const [breweries, setBreweries] = useState([]);
+    const [breweries, setBreweries] = useState<Brewery []>([]);
     const [isLoading, setIsLoading] = useState<Boolean>(0);
-    const [query, setQuery] = useState({
-        zipcode: ''
-    });
+    const [query, setQuery] = useState<Query []>({});
     const [errors, setErrors] = useState([]);
 
     const handleSubmit = (e) => {
@@ -76,9 +91,7 @@ const App: FC = () => {
             </Box>
 
             <Box maxW="960px" mx="auto" py="12">
-                { breweries.data && breweries.data.length
-                    ? breweries.data.map((brewery, breweryIdx) => <Heading key={breweryIdx}>{brewery[0].name}</Heading>)
-                    : null }
+                <BreweryList breweries={breweries} isLoading={isLoading}/>
             </Box>
 
         </ChakraProvider>
