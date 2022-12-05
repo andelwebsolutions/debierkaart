@@ -4,9 +4,9 @@ export default interface Brewery {
     city: string;
     address: string;
     zipcode: string;
-    $location_lat: number;
+    location_lat: number;
     location_lng: number;
-    openOn: string[];
-    openToday: boolean;
+    open_on: string[];
+    open_today: boolean;
     distance: number;
 }

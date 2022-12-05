@@ -57,6 +57,10 @@ class SearchController extends AbstractController
             $searchRequest->query->get('max_distance')
         );
 
+        $breweries = array_map(fn ($brewery) =>
+            array_merge($brewery[0], ['distance' => $brewery['distance']])
+        , $breweries);
+
         return $this->jsonResponseFactory->create(
             [
                 'data' => $breweries,

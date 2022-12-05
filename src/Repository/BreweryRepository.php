@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Brewery;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\AbstractQuery;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -41,7 +42,6 @@ class BreweryRepository extends ServiceEntityRepository
 
     public function findByCoordinatesAndOrderByDistance(string $location_lat, string $location_lng, int $max_distance): array
     {
-        /* @TODO: The distance is not correctly added to the entity object in the result. */
         return $this->createQueryBuilder('b')
             ->select('b')
             ->addSelect(
@@ -56,6 +56,6 @@ class BreweryRepository extends ServiceEntityRepository
             ->setParameter('max_distance', $max_distance)
             ->orderBy('distance', 'ASC')
             ->getQuery()
-            ->getResult();
+            ->getResult(AbstractQuery::HYDRATE_ARRAY);
     }
 }
