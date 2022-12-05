@@ -7,7 +7,6 @@ interface BreweryProps {
 }
 
 const Brewery: FC = ({ brewery }: BreweryProps) => {
-
     const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].reduce((acc, day) => {
         acc[day] = brewery.open_on.includes(day);
         return acc;

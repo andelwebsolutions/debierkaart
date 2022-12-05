@@ -14,7 +14,6 @@ interface BreweryListProps {
 }
 
 const BreweryList: FC = ({ breweries, isLoading }: BreweryListProps) => {
-    console.log(breweries);
     return (
         <>
             { breweries && breweries.data && ! breweries.data.length ?
