@@ -35,6 +35,9 @@ class Brewery
     #[ORM\Column(type: Types::ARRAY, nullable: true)]
     private array $open_on = [];
 
+    #[ORM\GeneratedValue]
+    private ?bool $open_today = false;
+
     public function getId(): ?int
     {
         return $this->id;

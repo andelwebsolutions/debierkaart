@@ -12,4 +12,8 @@ class SearchRequest extends BaseRequest
     #[NotBlank()]
     #[ValidZipcode()]
     protected string $zipcode;
+
+    #[Type('digit')]
+    #[NotBlank()]
+    protected string $max_distance;
 }

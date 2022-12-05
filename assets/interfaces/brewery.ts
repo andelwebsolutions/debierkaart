@@ -7,5 +7,6 @@ export default interface Brewery {
     $location_lat: number;
     location_lng: number;
     openOn: string[];
+    openToday: boolean;
     distance: number;
 }

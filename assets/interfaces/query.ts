@@ -1,3 +1,4 @@
 export default interface Query {
-    zipcode: string
+    zipcode: string;
+    max_distance: number;
 }

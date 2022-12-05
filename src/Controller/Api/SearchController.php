@@ -15,9 +15,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class SearchController extends AbstractController
 {
-    /* The maximum distance in km that breweries should be queried from the given zipcode. */
-    private const MAX_DISTANCE = 100;
-
     public function __construct(
         private JsonResponseFactory $jsonResponseFactory,
         private SearchRequest $request,
@@ -35,7 +32,7 @@ class SearchController extends AbstractController
 
             exit;
         }
-
+//
 //        try {
 //            $coordinates = $this->geocodeService
 //                ->zipcode($searchRequest->query->get('zipcode'))
@@ -57,15 +54,15 @@ class SearchController extends AbstractController
         $breweries = $breweriesRepository->findByCoordinatesAndOrderByDistance(
             $coordinates['lat'],
             $coordinates['lng'],
-            self::MAX_DISTANCE
+            $searchRequest->query->get('max_distance')
         );
 
         return $this->jsonResponseFactory->create(
             [
                 'data' => $breweries,
-                'distance' => self::MAX_DISTANCE,
                 'query' => [
-                    'zipcode' => $searchRequest->query->get('zipcode')
+                    'zipcode' => $searchRequest->query->get('zipcode'),
+                    'max_distance' => $searchRequest->query->get('max_distance'),
                 ]
             ]
         );
