@@ -1,16 +1,29 @@
-import React, { FC, useState } from "react";
-import { ChakraProvider } from "@chakra-ui/react";
-import { Box, Heading, Text, Input, Select, InputGroup, InputLeftElement, Button, Flex, Image, FormControl, FormErrorMessage } from "@chakra-ui/react";
-import { SearchIcon } from "@chakra-ui/icons";
+import React, {FC, useState} from "react";
+import {ChakraProvider} from "@chakra-ui/react";
+import {
+    Box,
+    Heading,
+    Text,
+    Input,
+    Select,
+    InputGroup,
+    InputLeftElement,
+    Button,
+    Flex,
+    Image,
+    FormControl,
+    FormErrorMessage
+} from "@chakra-ui/react";
+import {SearchIcon} from "@chakra-ui/icons";
 import axios from "axios";
-import { css } from "@emotion/react";
+import {css} from "@emotion/react";
 import Logo from "../components/Logo";
 import BreweryList from "../components/BreweryList";
 import BreweryInterface from "../interfaces/Brewery";
 import QueryInterface from "../interfaces/Brewery";
 
 const App: FC = () => {
-    const [breweries, setBreweries] = useState<BreweryInterface []>([]);
+    const [breweries, setBreweries] = useState<BreweryInterface [] | null>(null);
     const [isLoading, setIsLoading] = useState<Boolean>(0);
     const [query, setQuery] = useState<QueryInterface []>({});
     const [errors, setErrors] = useState([]);
@@ -19,7 +32,7 @@ const App: FC = () => {
         e.preventDefault();
 
         setIsLoading(1);
-        setBreweries([]);
+        setBreweries(null);
 
         const queryString = Object.keys(query)
             .map(k => encodeURIComponent(k) + '=' + encodeURIComponent(query[k]))
@@ -30,12 +43,12 @@ const App: FC = () => {
                 setErrors([]);
                 setBreweries(response.data);
             }).catch(error => {
-                if (error.response.status != 422) {
-                    alert('Er is iets mis gegaan. Probeer het opnieuw.');
-                }
+            if (error.response.status != 422) {
+                alert('Er is iets mis gegaan. Probeer het opnieuw.');
+            }
 
-                setErrors(error.response.data);
-            }).finally(() => setIsLoading(0));
+            setErrors(error.response.data);
+        }).finally(() => setIsLoading(0));
     };
 
     return (
@@ -52,23 +65,22 @@ const App: FC = () => {
 
                     <Box mt="4">
                         <form method="POST" onSubmit={handleSubmit}>
-                            <InputGroup gap="2" display={{ sm: "block", md: "flex" }}>
-                                <Box display={{ md: "flex" }} gap="2" width="100%">
+                            <InputGroup gap="2" display={{sm: "block", md: "flex"}}>
+                                <Box display={{sm: "flex"}} gap="2" width="100%">
                                     <Box flexGrow="1">
                                         <FormControl isInvalid={errors.zipcode}>
                                             <InputLeftElement
                                                 pointerEvents='none'
-                                                children={<SearchIcon color='gray.300' />}
+                                                children={<SearchIcon color='gray.300'/>}
                                             />
                                             <Input type="text" name="zipcode" placeholder="Vul je postcode in..."
                                                    pl="10"
                                                    required
                                                    color="white"
-                                                   _placeholder={{ color: 'gray.200' }}
-                                                   onChange={e => setQuery({ ...query, zipcode: e.target.value })}/>
+                                                   _placeholder={{color: 'gray.200'}}
+                                                   onChange={e => setQuery({...query, zipcode: e.target.value})}/>
                                             <FormErrorMessage>
-                                                {/*TODO: Remove hardcode.*/}
-                                                Vul een geldige postcode in.
+                                                {errors.zipcode}
                                             </FormErrorMessage>
                                         </FormControl>
                                     </Box>
@@ -77,21 +89,22 @@ const App: FC = () => {
                                             <Select type="text" name="max_distance" placeholder="Hoe ver mag het zijn?"
                                                     required
                                                     color="white"
-                                                    _placeholder={{ color: 'gray.200' }}
-                                                    onChange={e => setQuery({ ...query, max_distance: e.target.value })}>
+                                                    _placeholder={{color: 'gray.200'}}
+                                                    onChange={e => setQuery({...query, max_distance: e.target.value})}>
                                                 <option value={5}>5 km</option>
                                                 <option value={10}>10 km</option>
                                                 <option value={25}>25 km</option>
                                             </Select>
                                             <FormErrorMessage>
-                                                {/*TODO: Remove hardcode.*/}
-                                                Geef aan hoe ver het mag zijn.
+                                                {errors.max_distance}
                                             </FormErrorMessage>
                                         </FormControl>
                                     </Box>
                                 </Box>
-                                <Box mt={[2, 0]}>
-                                    <Button w="100%" color="gray.50" bgColor="yellow.500" _hover={{ bg: "yellow.400" }} type="submit" isLoading={isLoading === 1} loadingText="Laden...">Zoeken</Button>
+                                <Box mt={[2, 2, 0]}>
+                                    <Button w="100%" color="gray.50" bgColor="yellow.500" _hover={{bg: "yellow.400"}}
+                                            type="submit" isLoading={isLoading === 1}
+                                            loadingText="Laden...">Zoeken</Button>
                                 </Box>
                             </InputGroup>
                         </form>
