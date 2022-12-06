@@ -1,19 +1,6 @@
 import React, {FC, useState} from "react";
 import {ChakraProvider} from "@chakra-ui/react";
-import {
-    Box,
-    Heading,
-    Text,
-    Input,
-    Select,
-    InputGroup,
-    InputLeftElement,
-    Button,
-    Flex,
-    Image,
-    FormControl,
-    FormErrorMessage
-} from "@chakra-ui/react";
+import { Box, Heading, Input, Select, InputGroup, InputLeftElement, Button,FormControl, FormErrorMessage, Container } from "@chakra-ui/react";
 import {SearchIcon} from "@chakra-ui/icons";
 import API from "../utils/API";
 import { css } from "@emotion/react";
@@ -54,12 +41,12 @@ const App: FC = () => {
     return (
         <ChakraProvider>
             <Box css={css`
-                    background: -webkit-linear-gradient(rgba(17, 24, 39, 0.5), rgba(17, 24, 39, 0.5)), url("/background.jpg");
-                    background: linear-gradient(rgba(17, 24, 39, 0.5), rgba(17, 24, 39, 0.5)), url("/background.jpg");`}
+                    background: -webkit-linear-gradient(rgba(17, 24, 39, 0.6), rgba(17, 24, 39, 0.6)), url("/background.jpg");
+                    background: linear-gradient(rgba(17, 24, 39, 0.6), rgba(17, 24, 39, 0.6)), url("/background.jpg");`}
                     bgPosition="center" bgSize="contain" bgImage="url('background.jpg')" bgRepeat="no-repeat">
-                <Box maxW="760px" mx="auto" pt="8" pb="40" px="4">
+                <Container maxW="2xl" pt="8" pb={[24, 40]} px="4">
                     <Logo/>
-                    <Heading textColor="gray.100" mt="32" fontSize="3xl">Tijd voor een borrel? Vind de beste bierbrouweren bij jou in de buurt!</Heading>
+                    <Heading textColor="gray.100" mt={[16, 32]} fontSize={["3xl", "4xl"]}>Tijd voor een borrel? Vind de beste bierbrouweren bij jou in de buurt!</Heading>
 
                     <Box mt="4">
                         <form method="POST" onSubmit={handleSubmit}>
@@ -109,12 +96,12 @@ const App: FC = () => {
                             </InputGroup>
                         </form>
                     </Box>
-                </Box>
+                </Container>
             </Box>
 
-            <Box maxW="960px" mx="auto" py="12" px="4">
+            <Container maxW="4xl" py="12" px="4">
                 <BreweryList breweries={breweries} isLoading={isLoading}/>
-            </Box>
+            </Container>
 
         </ChakraProvider>
     );

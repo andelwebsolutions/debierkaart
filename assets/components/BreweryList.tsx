@@ -41,7 +41,7 @@ const BreweryList: FC = ({ breweries, isLoading }: BreweryListProps) => {
                 <Center display="flex" flexDirection="column">
                     <Image maxW="48" src="/empty.jpg"/>
                     <Heading mt="4" fontWeight="semibold" fontSize="2xl">Nog niet zoveel te zien hier</Heading>
-                    <Text mt="2">Gebruik het bovenstaande formulier om een bierbrouwerij bij jou in de buurt te vinden.</Text>
+                    <Text textAlign="center" mt="2">Gebruik het bovenstaande formulier om een bierbrouwerij bij jou in de buurt te vinden.</Text>
                 </Center> : null }
         </>
     )

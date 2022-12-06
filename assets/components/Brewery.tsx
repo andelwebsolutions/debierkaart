@@ -36,7 +36,7 @@ const Brewery: FC = ({ brewery }: BreweryProps) => {
                 </CardBody>
 
                 <CardFooter>
-                    <Flex display={{sm: 'block', lg: 'flex'}} w="100%">
+                    <Flex display={{sm: 'block', md: 'flex'}} w="100%">
                         <Box>
                             <Text>Open op</Text>
                             <HStack mt="1.5" spacing="2">
