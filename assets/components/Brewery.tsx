@@ -12,10 +12,12 @@ const Brewery: FC = ({ brewery }: BreweryProps) => {
         return acc;
     }, {});
 
+    const openToday = brewery.open_on.includes(new Date().toLocaleString('en-us', {  weekday: 'long' }));
+
     return (
         <Card direction={{ base: "column", md: "row" }} overflow="hidden" variant="outline">
             <Box>
-                { brewery.open_today ? <Tag top="3" left="2.5" position="absolute" bgColor="green.400" color="white">Vandaag open!</Tag> : null }
+                { openToday ? <Tag top="3" left="2.5" position="absolute" bgColor="green.400" color="white">Vandaag open!</Tag> : null }
                 <Image
                     h="100%"
                     objectFit="cover"
@@ -40,14 +42,14 @@ const Brewery: FC = ({ brewery }: BreweryProps) => {
                             <HStack mt="1.5" spacing="2">
                                 { Object.keys(days).map((day, index) =>
                                     <Center key={day}  borderRadius="4" h="10" w="10" border="1px" borderColor="yellow.400" bg={ days[day] ? "yellow.400" : "white" }>
-                                        <Text color={ days[day] ? "white" : "yellow.400" }>{ day.slice(0, 2) }</Text>
+                                        <Text color={ days[day] ? "gray.900" : "yellow.400" }>{ day.slice(0, 2) }</Text>
                                     </Center>
                                 ) }
                             </HStack>
                         </Box>
                         <Spacer/>
                         <Flex mt={[2, 2, 0]} flexDirection="column" justifyContent="end">
-                            <Button variant="solid" colorScheme="yellow" color="white">
+                            <Button variant="solid" bg="yellow.400" _hover={{ bgColor: "yellow.500" }} color="gray.900">
                                 {/*@TODO: Add link property to Brewery*/}
                                 <Link target="_blank" href={'https://www.google.com/maps?q='+ brewery.name}>
                                     Bekijk op maps

@@ -54,14 +54,12 @@ const App: FC = () => {
     return (
         <ChakraProvider>
             <Box css={css`
-                    background: rgb(250, 204, 21);
-                    background-size: contain;
-                    background: -webkit-linear-gradient(rgba(17, 24, 39, 0.2), rgba(17, 24, 39, 0.9)), url("/background.jpg");
-                    background: linear-gradient(rgba(17, 24, 39, 0.2), rgba(17, 24, 39, 0.9)), url("/background.jpg");`}
-                 bgPosition="center" bgRepeat="no-repeat">
-                <Box maxW="960px" mx="auto" pt="12" pb="32" px="4">
+                    background: -webkit-linear-gradient(rgba(17, 24, 39, 0.5), rgba(17, 24, 39, 0.5)), url("/background.jpg");
+                    background: linear-gradient(rgba(17, 24, 39, 0.5), rgba(17, 24, 39, 0.5)), url("/background.jpg");`}
+                    bgPosition="center" bgSize="contain" bgImage="url('background.jpg')" bgRepeat="no-repeat">
+                <Box maxW="760px" mx="auto" pt="8" pb="40" px="4">
                     <Logo/>
-                    <Text textColor="gray.100" mt="32" fontSize="lg">Zoek een bierbrouwerij bij jou in de buurt!</Text>
+                    <Heading textColor="gray.100" mt="32" fontSize="3xl">Tijd voor een borrel? Vind de beste bierbrouweren bij jou in de buurt!</Heading>
 
                     <Box mt="4">
                         <form method="POST" onSubmit={handleSubmit}>
@@ -71,13 +69,14 @@ const App: FC = () => {
                                         <FormControl isInvalid={errors.zipcode}>
                                             <InputLeftElement
                                                 pointerEvents='none'
-                                                children={<SearchIcon color='gray.300'/>}
+                                                children={<SearchIcon color='gray.700'/>}
                                             />
                                             <Input type="text" name="zipcode" placeholder="Vul je postcode in..."
                                                    pl="10"
+                                                   bg="white"
                                                    required
-                                                   color="white"
-                                                   _placeholder={{color: 'gray.200'}}
+                                                   color="gray.700"
+                                                   _placeholder={{color: 'gray.500'}}
                                                    onChange={e => setQuery({...query, zipcode: e.target.value})}/>
                                             <FormErrorMessage>
                                                 {errors.zipcode}
@@ -86,10 +85,11 @@ const App: FC = () => {
                                     </Box>
                                     <Box mt={[2, 0]}>
                                         <FormControl width="auto" isInvalid={errors.max_distance}>
-                                            <Select type="text" name="max_distance" placeholder="Hoe ver mag het zijn?"
+                                            <Select type="text" name="max_distance" placeholder="Maximale afstand"
+                                                    bg="white"
                                                     required
-                                                    color="white"
-                                                    _placeholder={{color: 'gray.200'}}
+                                                    color="gray.700"
+                                                    _placeholder={{color: 'gray.500'}}
                                                     onChange={e => setQuery({...query, max_distance: e.target.value})}>
                                                 <option value={5}>5 km</option>
                                                 <option value={10}>10 km</option>
@@ -102,7 +102,7 @@ const App: FC = () => {
                                     </Box>
                                 </Box>
                                 <Box mt={[2, 2, 0]}>
-                                    <Button w="100%" color="gray.50" bgColor="yellow.500" _hover={{bg: "yellow.400"}}
+                                    <Button w="100%" color="gray.900" bgColor="yellow.400" _hover={{bg: "yellow.500"}}
                                             type="submit" isLoading={isLoading === 1}
                                             loadingText="Laden...">Zoeken</Button>
                                 </Box>
