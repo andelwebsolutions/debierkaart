@@ -22,15 +22,15 @@ class BreweryRepository extends ServiceEntityRepository
         parent::__construct($registry, Brewery::class);
     }
 
-    public function findByCoordinatesAndOrderByDistance(string $location_lat, string $location_lng, int $max_distance): array
+    public function findByCoordinatesAndOrderByDistance(array $coordinates, int $max_distance): array
     {
         return $this->createQueryBuilder('b')
             ->select('b')
             ->addSelect(
-                '(ROUND(6371 * acos(cos( radians('.$location_lat.') ) 
+                '(ROUND(6371 * acos(cos( radians('.$coordinates['lat'].') ) 
                        * cos( radians( b.location_lat ) ) 
-                       * cos( radians( b.location_lng ) - radians('.$location_lng.') ) 
-                       + sin( radians('.$location_lat.') ) 
+                       * cos( radians( b.location_lng ) - radians('.$coordinates['lng'].') ) 
+                       + sin( radians('.$coordinates['lat'].') ) 
                        * sin( radians( b.location_lat ) )
                  ), 1)) as distance'
             )
