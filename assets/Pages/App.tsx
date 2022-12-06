@@ -46,7 +46,7 @@ const App: FC = () => {
                     bgPosition="center" bgSize="contain" bgImage="url('background.jpg')" bgRepeat="no-repeat">
                 <Container maxW="2xl" pt="8" pb={[24, 40]} px="4">
                     <Logo/>
-                    <Heading textColor="gray.100" mt={[16, 32]} fontSize={["3xl", "4xl"]}>Tijd voor een borrel? Vind de beste bierbrouweren bij jou in de buurt!</Heading>
+                    <Heading textColor="gray.100" mt={[16, 32]} fontSize={["3xl", "4xl"]}>Tijd voor een borrel? Vind de beste bierbrouwerijen bij jou in de buurt!</Heading>
 
                     <Box mt="4">
                         <form method="POST" onSubmit={handleSubmit}>
