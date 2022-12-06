@@ -22,24 +22,6 @@ class BreweryRepository extends ServiceEntityRepository
         parent::__construct($registry, Brewery::class);
     }
 
-    public function save(Brewery $entity, bool $flush = false): void
-    {
-        $this->getEntityManager()->persist($entity);
-
-        if ($flush) {
-            $this->getEntityManager()->flush();
-        }
-    }
-
-    public function remove(Brewery $entity, bool $flush = false): void
-    {
-        $this->getEntityManager()->remove($entity);
-
-        if ($flush) {
-            $this->getEntityManager()->flush();
-        }
-    }
-
     public function findByCoordinatesAndOrderByDistance(string $location_lat, string $location_lng, int $max_distance): array
     {
         return $this->createQueryBuilder('b')
