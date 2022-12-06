@@ -15,8 +15,8 @@ import {
     FormErrorMessage
 } from "@chakra-ui/react";
 import {SearchIcon} from "@chakra-ui/icons";
-import axios from "axios";
-import {css} from "@emotion/react";
+import API from "../utils/API";
+import { css } from "@emotion/react";
 import Logo from "../components/Logo";
 import BreweryList from "../components/BreweryList";
 import BreweryInterface from "../interfaces/Brewery";
@@ -38,7 +38,7 @@ const App: FC = () => {
             .map(k => encodeURIComponent(k) + '=' + encodeURIComponent(query[k]))
             .join("&");
 
-        axios.get("/api/search?" + queryString)
+        API.get("/search?" + queryString)
             .then((response) => {
                 setErrors([]);
                 setBreweries(response.data);
