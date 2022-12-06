@@ -32,12 +32,12 @@ const BreweryList: FC = ({ breweries, isLoading }: BreweryListProps) => {
                 </> : null }
 
             { isLoading ?
-                <Center>
+                <Center flexDirection={["column", "row"]}>
                     <Spinner/>
-                    <Text ml="4">Op zoek naar brouwerijeren bij jou in de buurt...</Text>
+                    <Text mt={[2, 0]} textAlign="center" ml="4">Op zoek naar brouwerijeren bij jou in de buurt...</Text>
                 </Center> : null }
 
-            { !breweries ?
+            { ! breweries && ! isLoading ?
                 <Center display="flex" flexDirection="column">
                     <Image maxW="48" src="/empty.jpg"/>
                     <Heading mt="4" fontWeight="semibold" fontSize="2xl">Nog niet zoveel te zien hier</Heading>
